@@ -6,9 +6,7 @@ class Inventory:
 
     def add_product(self, product: Product) -> None:
         if self.find_product(product.product_id):
-            raise ValueError(
-                "El producto ya existe"
-            )
+            raise ValueError("El producto ya existe")
         self.products[product.product_id] = product
 
 
