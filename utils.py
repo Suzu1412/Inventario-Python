@@ -1,5 +1,4 @@
 def read_int(message: str) -> int:
-
     while True:
         try:
             return int(input(message))
@@ -9,9 +8,7 @@ def read_int(message: str) -> int:
 
 
 def read_non_empty_string(message: str) -> str:
-
     while True:
-
         value = input(message).strip()
 
         if value:
@@ -20,9 +17,7 @@ def read_non_empty_string(message: str) -> str:
         print("ERROR: El texto no puede estar vacío")
 
 def read_positive_int(message: str) -> int:
-
     while True:
-
         value = read_int(message)
 
         if value > 0:
@@ -31,9 +26,7 @@ def read_positive_int(message: str) -> int:
         print("ERROR: Debe ser mayor que cero")
 
 def read_non_negative_int(message: str) -> int:
-
     while True:
-
         value = read_int(message)
 
         if value >= 0:

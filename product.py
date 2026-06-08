@@ -23,13 +23,17 @@ class Product:
                 "Cantidad inválida"
             )
         
-    def increase_stock(self, amount: int):
-        self.quantity += amount
-
-    def decrease_stock(self, amount: int):
-        if amount > self.quantity:
+    def modify_stock(self, amount: int):
+        if self.quantity + amount < 0:
             raise ValueError(
                 "Stock insuficiente"
             )
+        self.quantity += amount
 
-        self.quantity -= amount
+    # Este es el equivalente al methodo ToString()
+    def __str__(self):
+        return (
+            f"Producto: {self.name}"
+            f" - código: {self.product_id}"
+            f" - cantidad: {self.quantity}"
+        )
