@@ -1,6 +1,7 @@
 from product import Product
 from inventory import Inventory
 from utils import *
+from storage import InventoryStorage
 
 user_selection = 0
 inventory = Inventory()
@@ -12,6 +13,7 @@ def add_product_menu(inventory: Inventory) -> None:
             product = create_product()
             inventory.add_product(product)
             print("Producto agregado exitosamente")
+            export_json(inventory)
 
         except ValueError as error:
             print(error)
@@ -35,6 +37,7 @@ def delete_product_menu(inventory: Inventory) -> None:
         else:
             inventory.remove_product(product)
             print("Producto removido exitosamente")
+            export_json(inventory)
     except ValueError as error:
         print(error)
 
@@ -58,8 +61,17 @@ def modify_stock_menu(inventory: Inventory) -> None:
 
             print("Se ha modificado la cantidad exitosamente")
             print(product)
+            export_json(inventory)
         except ValueError as error:
             print(error)
+
+def export_json(inventory: Inventory) -> None:
+    storage = InventoryStorage()
+    storage.save(inventory)
+
+def import_json() -> Inventory:
+    storage = InventoryStorage()
+    return storage.load()
 
 
 # Functions
@@ -87,8 +99,9 @@ def find_product(inventory: Inventory) -> Product | None:
 
     product = inventory.find_product(product_id)
     return product
-    
+
 def main():
+    inventory = import_json()
     print("----------------------")
     print("Inventario")
     print("----------------------")

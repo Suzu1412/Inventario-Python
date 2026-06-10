@@ -1,0 +1,12 @@
+[
+    {
+        "product_id": 1,
+        "name": "Keyboard",
+        "quantity": 5
+    },
+    {
+        "product_id": 2,
+        "name": "Mouse",
+        "quantity": 10
+    }
+]
